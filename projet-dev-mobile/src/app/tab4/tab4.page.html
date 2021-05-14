@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab4</ion-title>
+    <ion-searchbar color="light" class="ion-searchtext" cancelButtonText="Annuler"
+                   placeholder="Rechercher"
+                   [showCancelButton]="true"
+                   (ionInput)="onSearchInput($event)"
+                   (ionCancel)="onSearchCancel($event)">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-header collapse="condense">
+  </ion-header>
+  <ion-toolbar></ion-toolbar>
 
 </ion-content>
