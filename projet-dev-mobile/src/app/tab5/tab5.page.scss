@@ -31,6 +31,10 @@ ion-thumbnail{
   margin-bottom:10px;
 }
 
+::slotted(img){
+  border-radius: 20%;
+}
+
 #logement{
   height:3em;
 }
