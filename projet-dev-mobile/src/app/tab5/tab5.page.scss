@@ -29,11 +29,9 @@ ion-searchbar{
 
 ion-thumbnail{
   margin-bottom:10px;
+  --border-radius : 20%;
 }
 
-::slotted(img){
-  border-radius: 20%;
-}
 
 #logement{
   height:3em;
