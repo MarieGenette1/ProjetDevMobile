@@ -1,7 +1,12 @@
+
+.my-label{
+  font-size:.7em;
+}
+
 #delete{
   position: absolute;
-  left: 61px;
-  top: 5px;
+  left: 30px;
+  top: 0;
 }
 
 ion-checkbox::part(container){
@@ -17,3 +22,15 @@ ion-searchbar{
   padding-top: 0.5em;
 }
 
+.size{
+  width:15px;
+  height:15px;
+}
+
+ion-thumbnail{
+  margin-bottom:10px;
+}
+
+#logement{
+  height:3em;
+}
