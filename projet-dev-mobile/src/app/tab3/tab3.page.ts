@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class Tab3Page {
 
   constructor() {}
-
-  onSearchInput() {}
-
-  onSearchCancel() {}
+ onSearchInput($event: any) {
+  }
+  onSearchCancel($event: any) {
+  }
 }
