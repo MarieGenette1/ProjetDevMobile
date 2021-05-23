@@ -9,7 +9,8 @@ export class Tab2Page {
 
   constructor() {}
 
-  onSearchInput() {}
-
-  onSearchCancel() {}
+ onSearchInput($event: any) {
+  }
+  onSearchCancel($event: any) {
+  }
 }
