@@ -1,0 +1,49 @@
+
+.my-label{
+  font-size:.8em;
+}
+
+#delete{
+  position: absolute;
+  left: 30px;
+  top: 0;
+}
+
+ion-checkbox::part(container){
+  --size: 17px;
+}
+ion-label.box{
+  max-width:2em !important;
+}
+
+.question{
+  font-size:1em;
+}
+//ion-content {
+//  --ion-background-color: linear-gradient(#00a3d9, #fff);
+//}
+
+
+ion-header{
+  background-color: #00a3d9;
+  padding: 5px;
+}
+
+ion-searchbar{
+  padding-top: 0.5em;
+}
+
+.size{
+  width:15px;
+  height:15px;
+}
+
+ion-thumbnail{
+  margin-bottom:10px;
+  --border-radius : 20%;
+}
+
+
+#logement{
+  height:3em;
+}

@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+  <ion-toolbar></ion-toolbar>
+  <div class="padding">
+    <div class="logo">
+      <img src="assets/img/icon2.png" alt="logo FindMe">
+    </div>
+    <ion-card-content class="Annonce">
+      <ion-card-title>Trouvez des <br/>professionnels <br/>proches de vous </ion-card-title>
+    </ion-card-content>
+    <ion-item>
+      <ion-label >Email</ion-label>
+      <ion-input placeholder="Adresse email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input placeholder="Mot de passe" type="password"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button [routerLink]="['/forgot-password']" fill="clear" slot="end">Mot de passe oublié ?</ion-button>
+    </ion-item>
+    <ion-button [routerLink]="['/tabs/tab1']" class="connexion" color="#00a3d9" expand="block">Se connecter</ion-button>
+    <br/>
+    <ion-button [routerLink]="['/registration']" class="inscription" color="dark" expand="block">Inscrivez-vous</ion-button>
+
+  </div>
+
+</ion-content>
+
