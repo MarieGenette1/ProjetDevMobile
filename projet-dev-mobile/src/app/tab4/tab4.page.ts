@@ -12,7 +12,8 @@ export class Tab4Page implements OnInit {
   ngOnInit() {
   }
 
-  onSearchInput() {}
-
-  onSearchCancel() {}
+ onSearchInput($event: any) {
+  }
+  onSearchCancel($event: any) {
+  }
 }
