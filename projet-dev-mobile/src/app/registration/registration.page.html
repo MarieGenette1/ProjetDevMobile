@@ -87,7 +87,7 @@
     </div>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="secondary" expand="block" [disabled]="!validationsForm.valid">S'inscrire</ion-button>
+        <ion-button type="submit" color="secondary" expand="block" [disabled]="!validationsForm.valid" (click)="saveUser()">S'inscrire</ion-button>
         <ion-button [routerLink]="['/login']" type="submit" color="medium" expand="block">Annuler</ion-button>
       </ion-col>
     </ion-row>
