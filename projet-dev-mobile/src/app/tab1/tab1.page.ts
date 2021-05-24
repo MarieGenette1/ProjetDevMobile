@@ -12,5 +12,6 @@ export class Tab1Page {
  onSearchInput($event: any) {
   }
   onSearchCancel($event: any) {
-  }}
+  }
 }
+
