@@ -80,9 +80,10 @@ export class RegistrationPage implements OnInit {
         Validators.required,
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
       ])),
-      matchingPasswords: this.matchingPasswordsGroup,
-      terms: new FormControl(true, Validators.pattern('true'))
+      matchingPasswords: this.matchingPasswordsGroup
     });
+  }
+  saveUser() {
     this.submitAttempt = true;
     this.userData.push([
       {
@@ -90,11 +91,14 @@ export class RegistrationPage implements OnInit {
         name: this.validationsForm.value.name,
         lastname: this.validationsForm.value.lastname,
         email: this.validationsForm.value.email,
-        password: this.validationsForm.value.password
+        password: this.matchingPasswordsGroup.value.password,
       },
     ]);
-    console.log('success');
-  }
+   console.log('incription confirmée!');
+    console.log(this.userData);
+    alert(
+    ' Bienvenue '+ this.validationsForm.value.username
+    )};
   onSubmit(values) {
     console.log(values);
     this.router.navigate(['/login']);
