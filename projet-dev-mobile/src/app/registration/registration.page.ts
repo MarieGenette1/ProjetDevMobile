@@ -94,7 +94,7 @@ export class RegistrationPage implements OnInit {
         password: this.matchingPasswordsGroup.value.password,
       },
     ]);
-   console.log('incription confirmée!');
+   console.log('inscription confirmée!');
     console.log(this.userData);
     alert(
     ' Bienvenue '+ this.validationsForm.value.username
