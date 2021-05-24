@@ -17,35 +17,32 @@ export class RegistrationPage implements OnInit {
   matchingPasswordsGroup: FormGroup;
   validationMessages = {
     username: [
-      {type: 'required', message: 'Username is required.'},
-      {type: 'minlength', message: 'Username must be at least 5 characters long.'},
-      {type: 'maxlength', message: 'Username cannot be more than 25 characters long.'},
-      {type: 'pattern', message: 'Your username must contain only numbers and letters.'},
-      {type: 'validUsername', message: 'Your username has already been taken.'}
+      {type: 'required', message: 'Un identifiant est obligatoire.'},
+      {type: 'minlength', message: 'Votre identifiant doit contenir au moins 5 caractères.'},
+      {type: 'maxlength', message: 'Votre identifiant est limité à 25 caractères.'},
+      {type: 'pattern', message: 'Votre identifiant ne peut être composé que de chiffres et de lettres.'},
+      {type: 'validUsername', message: 'Votre identifiant est déjà pris.'}
     ],
     name: [
-      {type: 'required', message: 'Name is required.'}
+      {type: 'required', message: 'Le nom est obligatoire.'}
     ],
     lastname: [
-      {type: 'required', message: 'Last name is required.'}
+      {type: 'required', message: 'Le prénom est obligatoire.'}
     ],
     email: [
-      {type: 'required', message: 'Email is required.'},
-      {type: 'pattern', message: 'Please enter a valid email.'}
+      {type: 'required', message: 'Une adresse mail est nécessaire.'},
+      {type: 'pattern', message: 'Veuillez entrez une adresse mail valide.'}
     ],
     password: [
-      {type: 'required', message: 'Password is required.'},
-      {type: 'minlength', message: 'Password must be at least 5 characters long.'},
-      {type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, and one number.'}
+      {type: 'required', message: 'Le mot de passe est obligatoire.'},
+      {type: 'minlength', message: 'Le mot de passe comporte au minimum 5 caractères.'},
+      {type: 'pattern', message: 'Votre mot de passe doit contenir une majuscule, une minuscule et un chiffre.'}
     ],
     confirmPassword: [
-      {type: 'required', message: 'Confirm password is required.'}
+      {type: 'required', message: 'la confirmation du mot de passe est obligatoire.'}
     ],
     matchingPasswords: [
-      {type: 'areEqual', message: 'Password mismatch.'}
-    ],
-    terms: [
-      {type: 'pattern', message: 'You must accept terms and conditions.'}
+      {type: 'areEqual', message: 'le mot de passe ne correspond pas.'}
     ],
   };
 
