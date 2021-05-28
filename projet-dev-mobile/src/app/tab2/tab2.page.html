@@ -1,9 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar color='primary'>
-    <ion-searchbar color="light" class="ion-searchtext"
-                   cancelButtonText="Annuler"
-                   placeholder="Rechercher un contact"
-                   showCancelButton="focus"
+    <ion-searchbar color="light" class="ion-searchtext" cancelButtonText="Annuler"
+                   placeholder="Rechercher"
+                   [showCancelButton]="true"
                    (ionInput)="onSearchInput($event)"
                    (ionCancel)="onSearchCancel($event)">
     </ion-searchbar>
@@ -12,6 +11,6 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-title>0 contact</ion-title>
   </ion-header>
+
 </ion-content>
