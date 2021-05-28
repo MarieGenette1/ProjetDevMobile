@@ -9,7 +9,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
   </ion-header>
   <ion-toolbar></ion-toolbar>
@@ -65,19 +66,17 @@
       <span>
          <ion-icon id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
-           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           <img id="mini" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
     </ion-item>
 
-    <ion-item lines="full">
-      <span>
-      <ion-label class="my-label">Etes-vous à la recherche d'un emploi ?&nbsp;&nbsp;&nbsp;</ion-label>
-      </span>
-      <ion-label>O</ion-label>
-      <ion-checkbox class="size" id="box" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
-      <ion-label>N</ion-label>
+    <ion-item class="question" lines="full">
+      <ion-label class="my-label">Recherchez-vous un emploi ?&nbsp;&nbsp;&nbsp;</ion-label>
+      <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
+      <ion-label class="box">Oui</ion-label>
       <ion-checkbox class="size" color="primary" (click)="trueFormControl.setValue(false)" [formControl]="falseFormControl"></ion-checkbox>
+      <ion-label class="box">Non</ion-label>
     </ion-item>
 
     <ion-item lines="full">
@@ -124,14 +123,12 @@
 
     </ion-item>
 
-    <ion-item lines="full">
-      <span>
-      <ion-label class="my-label">Etes-vous à la recherche d'un logement ?&nbsp;</ion-label>
-      </span>
-      <ion-label>O</ion-label>
-      <ion-checkbox class="size" id="box" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
-      <ion-label>N</ion-label>
+    <ion-item class="question" lines="full">
+      <ion-label class="my-label">Recherchez-vous un logement ?</ion-label>
+      <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
+      <ion-label class="box">Oui</ion-label>
       <ion-checkbox class="size" color="primary" (click)="trueFormControl.setValue(false)" [formControl]="falseFormControl"></ion-checkbox>
+      <ion-label class="box">Non</ion-label>
     </ion-item>
 
     <ion-item lines="full">

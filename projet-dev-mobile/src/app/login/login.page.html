@@ -1,6 +1,6 @@
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-  </ion-header>
   <ion-toolbar></ion-toolbar>
   <div class="padding">
     <div class="logo">
@@ -14,8 +14,8 @@
       <ion-input placeholder="Adresse email" type="email"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input placeholder="Password" type="password"></ion-input>
+      <ion-label>Mot de passe</ion-label>
+      <ion-input placeholder="Mot de passe" type="password"></ion-input>
     </ion-item>
     <ion-item lines="none">
       <ion-button [routerLink]="['/forgot-password']" fill="clear" slot="end">Mot de passe oublié ?</ion-button>
@@ -23,8 +23,6 @@
     <ion-button [routerLink]="['/tabs/tab1']" class="connexion" color="#00a3d9" expand="block">Se connecter</ion-button>
     <br/>
     <ion-button [routerLink]="['/registration']" class="inscription" color="dark" expand="block">Inscrivez-vous</ion-button>
-
   </div>
-
 </ion-content>
 

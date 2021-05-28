@@ -1,6 +1,6 @@
 
 .my-label{
-  font-size:.7em;
+  font-size:.8em;
 }
 
 #delete{
@@ -12,6 +12,17 @@
 ion-checkbox::part(container){
   --size: 17px;
 }
+
+ion-label.box{
+  max-width:2em !important;
+}
+
+.question{
+  font-size:1em;
+}
+//ion-content {
+//  --ion-background-color: linear-gradient(#00a3d9, #fff);
+//}
 
 ion-header{
   background-color: #00a3d9;
@@ -29,6 +40,7 @@ ion-searchbar{
 
 ion-thumbnail{
   margin-bottom:10px;
+  --border-radius : 20%;
 }
 
 #logement{
