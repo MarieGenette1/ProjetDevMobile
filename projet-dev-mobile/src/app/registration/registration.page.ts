@@ -7,12 +7,14 @@ import { PasswordValidator } from '../validators/password.validator';
 @Injectable({
   providedIn: 'root'
 })
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
+
   validationsForm: FormGroup;
   matchingPasswordsGroup: FormGroup;
   validationMessages = {

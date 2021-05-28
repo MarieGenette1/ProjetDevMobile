@@ -12,6 +12,7 @@
 ion-checkbox::part(container){
   --size: 17px;
 }
+
 ion-label.box{
   max-width:2em !important;
 }
@@ -22,7 +23,6 @@ ion-label.box{
 //ion-content {
 //  --ion-background-color: linear-gradient(#00a3d9, #fff);
 //}
-
 
 ion-header{
   background-color: #00a3d9;
@@ -42,7 +42,6 @@ ion-thumbnail{
   margin-bottom:10px;
   --border-radius : 20%;
 }
-
 
 #logement{
   height:3em;
