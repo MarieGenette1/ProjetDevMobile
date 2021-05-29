@@ -3,10 +3,12 @@ import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import {Router} from '@angular/router';
 import {UsernameValidator} from '../validators/username.validator';
 import { PasswordValidator } from '../validators/password.validator';
+import { ApiService } from '../api.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.page.html',
@@ -17,32 +19,35 @@ export class RegistrationPage implements OnInit {
   matchingPasswordsGroup: FormGroup;
   validationMessages = {
     username: [
-      {type: 'required', message: 'Un identifiant est obligatoire.'},
-      {type: 'minlength', message: 'Votre identifiant doit contenir au moins 5 caractères.'},
-      {type: 'maxlength', message: 'Votre identifiant est limité à 25 caractères.'},
-      {type: 'pattern', message: 'Votre identifiant ne peut être composé que de chiffres et de lettres.'},
-      {type: 'validUsername', message: 'Votre identifiant est déjà pris.'}
+      {type: 'required', message: 'Username is required.'},
+      {type: 'minlength', message: 'Username must be at least 5 characters long.'},
+      {type: 'maxlength', message: 'Username cannot be more than 25 characters long.'},
+      {type: 'pattern', message: 'Your username must contain only numbers and letters.'},
+      {type: 'validUsername', message: 'Your username has already been taken.'}
     ],
     name: [
-      {type: 'required', message: 'Le nom est obligatoire.'}
+      {type: 'required', message: 'Name is required.'}
     ],
     lastname: [
-      {type: 'required', message: 'Le prénom est obligatoire.'}
+      {type: 'required', message: 'Last name is required.'}
     ],
     email: [
-      {type: 'required', message: 'Une adresse mail est nécessaire.'},
-      {type: 'pattern', message: 'Veuillez entrez une adresse mail valide.'}
+      {type: 'required', message: 'Email is required.'},
+      {type: 'pattern', message: 'Please enter a valid email.'}
     ],
     password: [
-      {type: 'required', message: 'Le mot de passe est obligatoire.'},
-      {type: 'minlength', message: 'Le mot de passe comporte au minimum 5 caractères.'},
-      {type: 'pattern', message: 'Votre mot de passe doit contenir une majuscule, une minuscule et un chiffre.'}
+      {type: 'required', message: 'Password is required.'},
+      {type: 'minlength', message: 'Password must be at least 5 characters long.'},
+      {type: 'pattern', message: 'Your password must contain at least one uppercase, one lowercase, and one number.'}
     ],
     confirmPassword: [
-      {type: 'required', message: 'la confirmation du mot de passe est obligatoire.'}
+      {type: 'required', message: 'Confirm password is required.'}
     ],
     matchingPasswords: [
-      {type: 'areEqual', message: 'le mot de passe ne correspond pas.'}
+      {type: 'areEqual', message: 'Password mismatch.'}
+    ],
+    terms: [
+      {type: 'pattern', message: 'You must accept terms and conditions.'}
     ],
   };
 
@@ -51,6 +56,7 @@ export class RegistrationPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
+    public _apiService : ApiService,
 
   ) {}
 
@@ -80,10 +86,9 @@ export class RegistrationPage implements OnInit {
         Validators.required,
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
       ])),
-      matchingPasswords: this.matchingPasswordsGroup
+      matchingPasswords: this.matchingPasswordsGroup,
+      terms: new FormControl(true, Validators.pattern('true'))
     });
-  }
-  saveUser() {
     this.submitAttempt = true;
     this.userData.push([
       {
@@ -91,16 +96,32 @@ export class RegistrationPage implements OnInit {
         name: this.validationsForm.value.name,
         lastname: this.validationsForm.value.lastname,
         email: this.validationsForm.value.email,
-        password: this.matchingPasswordsGroup.value.password,
+        password: this.validationsForm.value.password
       },
     ]);
-   console.log('inscription confirmée!');
-    console.log(this.userData);
-    alert(
-    ' Bienvenue '+ this.validationsForm.value.username
-    )};
+    console.log('success');
+  }
   onSubmit(values) {
     console.log(values);
     this.router.navigate(['/login']);
   }
+
+
+  addUser(values){
+    this._apiService.addUser(values).subscribe((res:any) =>{
+      console.log("SUCCESS ===", res);
+      alert('SUCCESS');
+      //this.getUser();
+  
+    }, (error: any) =>{
+      console.log("ERROR ===",
+      values['matchingPasswords']['password'], 
+      " :: de type", error);
+      alert('ERROR');
+    })
+  }
+
+
+
+
 }

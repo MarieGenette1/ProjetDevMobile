@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ApiService} from '../api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,11 +8,38 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  users : any[];
+  numberContact : any[];
+
+  constructor(public _apiService : ApiService) {
+    this.getUser();
+    this.getNumberUser();
+
+  }
 
  onSearchInput($event: any) {
   }
   onSearchCancel($event: any) {
   }
+
+  getUser(){
+    this._apiService.getUser().subscribe((res:any) =>{
+      console.log("SUCCESS GET USER ===", res);
+      this.users = res;
+    }, (error: any) =>{
+      console.log("ERRRO GET USER ===", error);
+    }) 
+
+  }
+
+  getNumberUser(){
+    this._apiService.getNumberUser().subscribe((res:any) =>{
+      console.log("SUCCESS GET NUMBER ===", res);
+      this.numberContact = res;
+    }, (error: any) =>{
+      console.log("ERRRO GET USER ===", error);
+    }) 
+  }
+
 }
 
