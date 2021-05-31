@@ -47,3 +47,42 @@ ion-thumbnail{
 #logement{
   height:3em;
 }
+
+ion-content {
+  .error-message
+  {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: -10px;
+  }
+
+  .submit-btn {
+    margin: 48px 12px 12px;
+  }
+}
+.ng-valid.ng-dirty:not(form) {
+  border: solid 2px lightgreen;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.ng-invalid.ng-dirty:not(form), .ng-invalid:not(form).form-submitted {
+  border: solid 2px lightcoral;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.ng-pristine:not(form) {
+  border: solid 2px #ddd;
+  border-radius: 10px;
+  margin-bottom:1em;
+  text-indent: 5px;
+}
+form {
+padding-right: 8px;
+}
+
+ion-button{
+  margin-left:10px;
+}

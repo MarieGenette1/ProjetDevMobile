@@ -46,9 +46,6 @@ export class RegistrationPage implements OnInit {
     matchingPasswords: [
       {type: 'areEqual', message: 'Password mismatch.'}
     ],
-    terms: [
-      {type: 'pattern', message: 'You must accept terms and conditions.'}
-    ],
   };
 
   private submitAttempt: boolean;
@@ -56,7 +53,7 @@ export class RegistrationPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
-    public _apiService : ApiService,
+    public _apiService: ApiService,
 
   ) {}
 
@@ -68,9 +65,7 @@ export class RegistrationPage implements OnInit {
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')
       ])),
       confirmPassword: new FormControl('', Validators.required)
-    }, (formGroup: FormGroup) => {
-      return PasswordValidator.areEqual(formGroup);
-    });
+    }, (formGroup: FormGroup) => PasswordValidator.areEqual(formGroup));
 
     this.validationsForm = this.formBuilder.group({
       username: new FormControl('', Validators.compose([
@@ -87,7 +82,6 @@ export class RegistrationPage implements OnInit {
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')
       ])),
       matchingPasswords: this.matchingPasswordsGroup,
-      terms: new FormControl(true, Validators.pattern('true'))
     });
     this.submitAttempt = true;
     this.userData.push([
@@ -108,20 +102,16 @@ export class RegistrationPage implements OnInit {
 
 
   addUser(values){
-    this._apiService.addUser(values).subscribe((res:any) =>{
-      console.log("SUCCESS ===", res);
+    this._apiService.addUser(values).subscribe((res: any) =>{
+      console.log('SUCCESS ===', res);
       alert('SUCCESS');
       //this.getUser();
-  
+
     }, (error: any) =>{
-      console.log("ERROR ===",
-      values['matchingPasswords']['password'], 
-      " :: de type", error);
+      console.log('ERROR ===',
+      values.matchingPasswords.password,
+      ' :: de type', error);
       alert('ERROR');
-    })
+    });
   }
-
-
-
-
 }
