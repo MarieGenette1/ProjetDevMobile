@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ user?.name }}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="padding">
+    <ion-item>
+      <ion-avatar>
+        <img alt="photo" src="assets/img/avatar.png">
+      </ion-avatar>
+      <ion-label class="short-version">
+        <h2>{{user?.name}}  </h2>
+        <p>Responsable Marketing</p>
+        <p>57000 Metz </p>
+      </ion-label>
+       <ion-avatar> <ion-icon size="large" name="heart-outline" [color]="user?.likedBy ?'danger'  : 'warning'" name="heart"></ion-icon></ion-avatar>
+    </ion-item>
+  <h2>Présentation</h2>
+  <p>{{ user?.description }}</p>
+  <h2>Activités</h2>
+  <p>{{ user?.activity }}</p>
+  <h2>Sur la société</h2>
+  <p>{{ user?.society }}</p>
+  <ion-button type="submit" color="secondary" expand="block" (click)="maFonction()">Prendre Contact</ion-button>
+</div>
+</ion-content>
