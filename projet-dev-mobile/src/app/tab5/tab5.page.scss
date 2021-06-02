@@ -1,6 +1,6 @@
 
 .my-label{
-  font-size:.8em;
+  font-size:.75em;
 }
 
 #delete{
@@ -8,7 +8,11 @@
   left: 30px;
   top: 0;
 }
-
+#delete.Xfile{
+  position: absolute;
+  left: 30px;
+  top:5px;
+}
 ion-checkbox::part(container){
   --size: 17px;
 }
@@ -85,4 +89,15 @@ padding-right: 8px;
 
 ion-button{
   margin-left:10px;
+}
+
+.CV{
+  display: inline-block;
+}
+
+.file{
+  padding: 5px;
+  margin-left: 1.2em;
+  border: 2px solid #ccc;
+  border-radius:5px;
 }

@@ -15,15 +15,19 @@
   <ion-toolbar></ion-toolbar>
   <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
     <ion-item lines="none">
-      <ion-label class="my-label">Photo de profil</ion-label>
+      <ion-label class="my-label">&nbsp;Photo de profil</ion-label>
     </ion-item>
     <ion-item lines="none">
       <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
+         <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"></ion-label>
+        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+      </ion-item>
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating"><strong>&nbsp;Nom:</strong> Schmitt</ion-label>
@@ -83,14 +87,17 @@
     <ion-item lines="none">
       <ion-label class="my-label">&nbsp;Photo de ma carte de visite</ion-label>
     </ion-item>
-
     <ion-item lines="none">
       <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
+         <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
-           <img id="mini" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"></ion-label>
+        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+      </ion-item>
     </ion-item>
     <ion-item class="question" lines="none">
       <ion-label class="my-label">&nbsp;Recherchez-vous un emploi ?</ion-label>
@@ -159,26 +166,27 @@
       </ng-container>
     </div>
     </ion-item>
-    <ion-item lines="none">
-      <ion-label class="my-label" position="floating">//PARTIE IMPORT CV//</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
 
     <ion-item lines="none">
       <ion-label class="my-label">Mon CV</ion-label>
     </ion-item>
 
-    <ion-item lines="none">
+    <ion-item class="CV" lines="none">
       <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
+         <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"></ion-label>
+        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+      </ion-item>
+
     </ion-item>
 
     <ion-item class="question" lines="none">
-      <ion-label class="my-label">&nbsp;Recherchez-vous un logement ?</ion-label>
+      <ion-label class="my-label">&nbsp;Recherchez-vous un logement?</ion-label>
       <ion-checkbox class="size" color="primary" (click)="falseFormControl1.setValue(false)" [formControl]="trueFormControl1"></ion-checkbox>
       <ion-label class="box">Oui</ion-label>
       <ion-checkbox class="size" color="primary" (click)="trueFormControl1.setValue(false)" [formControl]="falseFormControl1"></ion-checkbox>
