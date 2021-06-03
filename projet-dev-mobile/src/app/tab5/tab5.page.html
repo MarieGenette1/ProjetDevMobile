@@ -26,7 +26,7 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
       </ion-item>
     </ion-item>
     <ion-item lines="none">
@@ -96,7 +96,7 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
       </ion-item>
     </ion-item>
     <ion-item class="question" lines="none">
@@ -144,7 +144,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating">&nbsp;Distance</ion-label>
-      <ion-input type="number" formControlName="milesAway" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <ion-input type="text" pattern="\d*" maxlength="4" formControlName="milesAway" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
     <div class="validation-errors" >
       <ng-container *ngFor="let validation of validationMessages.milesAway">
         <div class="error-message" *ngIf="validationsForm.get('milesAway').hasError(validation.type) && (validationsForm.get('milesAway').dirty || validationsForm.get('milesAway').touched)
@@ -180,7 +180,7 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" clear-input="true" [disabled]="trueFormControl1.value===false"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()" [disabled]="trueFormControl.value===false">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
       </ion-item>
 
     </ion-item>
@@ -230,7 +230,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating">&nbsp;Rayon</ion-label>
-      <ion-input type="number" formControlName="sectorDistance" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
+      <ion-input type="text" pattern="\d*" maxlength="4" formControlName="sectorDistance" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
     <div class="validation-errors" >
       <ng-container *ngFor="let validation of validationMessages.sectorDistance">
         <div class="error-message" *ngIf="validationsForm.get('sectorDistance').hasError(validation.type) && (validationsForm.get('sectorDistance').dirty || validationsForm.get('sectorDistance').touched)
@@ -242,7 +242,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating">&nbsp;Surface</ion-label>
-      <ion-input  type="texte" formControlName="surface" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
+      <ion-input  type="text" pattern="\d*" maxlength="4"  formControlName="surface" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
     <div class="validation-errors" >
       <ng-container *ngFor="let validation of validationMessages.surface">
         <div class="error-message" *ngIf="validationsForm.get('surface').hasError(validation.type) && (validationsForm.get('surface').dirty || validationsForm.get('surface').touched)
@@ -254,7 +254,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating">&nbsp;Nombre de pièces</ion-label>
-      <ion-input  type="number"  formControlName="room" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
+      <ion-input  type="text" pattern="\d*" maxlength="2"  formControlName="room" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
     <div class="validation-errors" >
       <ng-container *ngFor="let validation of validationMessages.room">
         <div class="error-message" *ngIf="validationsForm.get('room').hasError(validation.type) && (validationsForm.get('room').dirty || validationsForm.get('room').touched)
@@ -266,7 +266,7 @@
     </ion-item>
     <ion-item lines="none">
       <ion-label class="my-label" position="floating">&nbsp;Prix minimum</ion-label>
-      <ion-input type="text"  formControlName="minPrice" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
+      <ion-input type="text" pattern="\d*" maxlength="8"  formControlName="minPrice" clear-input="true" [disabled]="trueFormControl1.value===false"></ion-input>
     <div class="validation-errors" >
       <ng-container *ngFor="let validation of validationMessages.minPrice">
         <div class="error-message" *ngIf="validationsForm.get('minPrice').hasError(validation.type) && (validationsForm.get('minPrice').dirty || validationsForm.get('minPrice').touched)

@@ -135,4 +135,8 @@ export class Tab5Page implements OnInit {
     console.log(values);
     this.router.navigate(['./tabs/tab1']);
   }
+
+  addFile() {
+    console.log('no file yet!');
+  }
 }

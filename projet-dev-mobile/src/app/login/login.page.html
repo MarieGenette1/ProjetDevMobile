@@ -11,11 +11,11 @@
     </ion-card-content>
     <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
       <ion-item lines="full">
-        <ion-label class="my-label" position="floating"><strong>&nbsp;Email</strong></ion-label>
-        <ion-input type="text" formControlName="email"></ion-input>
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Identifiant</strong></ion-label>
+        <ion-input type="text" formControlName="username" (keyup)="isValidUser()"></ion-input>
       <div class="validation-errors">
-        <ng-container *ngFor="let validation of validationMessages.email">
-          <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+        <ng-container *ngFor="let validation of validationMessages.username">
+          <div class="error-message" *ngIf="validationsForm.get('username').hasError(validation.type) && (validationsForm.get('username').dirty || validationsForm.get('username').touched)">
             <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
           </div>
         </ng-container>
@@ -23,7 +23,7 @@
     </ion-item>
       <ion-item lines="full">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Mot de passe</strong></ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-input type="password" formControlName="password" (keyup)="isValidUser()"></ion-input>
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validationMessages.password">
           <div class="error-message" *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
@@ -35,7 +35,7 @@
     <ion-item lines="none">
       <ion-button [routerLink]="['/forgot-password']" fill="clear" slot="end">Mot de passe oublié ?</ion-button>
     </ion-item>
-    <ion-button [routerLink]="['/tabs/tab1']" class="connexion" color="#00a3d9" expand="block" [disabled]="!validationsForm.valid">Se connecter</ion-button>
+    <ion-button [routerLink]="['/tabs/tab1']" class="connexion" color="#00a3d9" expand="block" [disabled]="!isValidUser()">Se connecter</ion-button>
     <br/>
     <ion-button [routerLink]="['/registration']" class="inscription" color="dark" expand="block" >Inscrivez-vous</ion-button>
     </form>

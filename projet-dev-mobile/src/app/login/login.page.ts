@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {ApiService} from '../api.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginPage implements OnInit {
   validationsForm: FormGroup;
   validationMessages = {
-    email: [
-      {type: 'required', message: 'email de création de compte'}
+    username: [
+      {type: 'required', message: 'Veuillez saisir votre identifiant'}
     ],
     password: [
       {type: 'required', message: 'mot de passe associé au compte.'},
@@ -21,22 +22,32 @@ export class LoginPage implements OnInit {
 
   private submitAttempt: boolean;
   private userData=[];
-  constructor(private router: Router, public formBuilder: FormBuilder) {
+
+  constructor(private router: Router, public formBuilder: FormBuilder,public userService: UserService) {
   }
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
-      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
   this.submitAttempt = true;
   this.userData.push([
                        {
-                         email: this.validationsForm.value.email,
+                         username: this.validationsForm.value.username,
                          password: this.validationsForm.value.password,
                        },
                      ]);
+  return this.userData;
   }
+  isValidUser(){
+    for (const item of this.userService.users) {
+    if(this.validationsForm.value.username === item.username && this.validationsForm.value.password === item.password) {
+      return true;
+      }
+    }
+  }
+
   navTabs(){
     //you can use either of below
     this.router.navigateByUrl('./tabs/tab1');

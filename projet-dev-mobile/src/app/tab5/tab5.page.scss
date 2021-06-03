@@ -2,7 +2,9 @@
 .my-label{
   font-size:.75em;
 }
-
+.file-label{
+  font-size:.8em;
+}
 #delete{
   position: absolute;
   left: 30px;
@@ -96,8 +98,9 @@ ion-button{
 }
 
 .file{
-  padding: 5px;
+  display: inline-block;
   margin-left: 1.2em;
   border: 2px solid #ccc;
   border-radius:5px;
+  padding:5px;
 }

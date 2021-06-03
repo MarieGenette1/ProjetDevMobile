@@ -33,7 +33,7 @@
   <ion-list lines="none">
     <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users">
       <ion-avatar>
-        <img alt="photo" src="assets/img/avatar.png">
+        <img alt="photo" src="{{user.img}}">
       </ion-avatar>
       <ion-label  class="short-version">
         <h2>{{user.name}}  </h2>
