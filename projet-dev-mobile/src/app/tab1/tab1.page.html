@@ -30,7 +30,7 @@
       </ion-item>
 </ion-list>
   </div>
-  <ion-list lines="none">
+  <ion-list lines="full">
     <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users">
       <ion-avatar>
         <img alt="photo" src="{{user.img}}">
