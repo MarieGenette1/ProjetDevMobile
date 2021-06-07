@@ -3,6 +3,10 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router} from '@angular/router';
 import { PhotoService } from '../services/photo.service';
+//import { ImagePicker } from '@ionic-native/image-picker/ngx';
+//import { Camera, CameraResultType, CameraSource, Photo , CameraOptions} from '@capacitor/camera';
+//import { File } from '@ionic-native/file/ngx';
+
 
 @Component({
   selector: 'app-tab5',
@@ -74,13 +78,17 @@ export class Tab5Page implements OnInit {
   private userData=[];
 
   constructor(public formBuilder: FormBuilder,
+  //public actionSheetController: ActionSheetController,
   public photoService: PhotoService,
-  private router: Router,) {
+  private router: Router,
+  ) {
   }
 
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
   }
+
+
 
   async ngOnInit() {
     await this.photoService.loadSaved();
@@ -133,6 +141,7 @@ export class Tab5Page implements OnInit {
     ]);
     console.log('success');
   }
+
 
   onSearchInput($event: any) {
   }
