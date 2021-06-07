@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router} from '@angular/router';
-
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab5',
@@ -72,10 +72,19 @@ export class Tab5Page implements OnInit {
 
   private submitAttempt: boolean;
   private userData=[];
-  constructor(private router: Router, public formBuilder: FormBuilder) {
+
+  constructor(public formBuilder: FormBuilder,
+  public photoService: PhotoService,
+  private router: Router,) {
   }
 
-  ngOnInit() {
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
+  }
+
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+
     this.validationsForm = this.formBuilder.group({
       minPrice: new FormControl('', Validators.required),
       sectorDistance: new FormControl('', Validators.required),
@@ -139,4 +148,5 @@ export class Tab5Page implements OnInit {
   addFile() {
     console.log('no file yet!');
   }
+
 }

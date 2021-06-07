@@ -21,12 +21,18 @@
       <span>
          <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
-           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           <ion-img [src]="photo.webviewPath"></ion-img>
          </ion-thumbnail>
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false">
+          <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+            <ion-fab-button (click)="addPhotoToGallery()">
+              <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-input>
       </ion-item>
     </ion-item>
     <ion-item lines="none">
