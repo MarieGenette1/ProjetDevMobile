@@ -85,8 +85,14 @@ ion-content {
   margin-bottom:1em;
   text-indent: 5px;
 }
+
 form {
 padding-right: 8px;
+}
+
+.user ion-input{
+  border: 2px solid limegreen;
+  border-radius: 10px;
 }
 
 ion-button{

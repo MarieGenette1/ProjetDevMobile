@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiService} from '../api.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,11 +11,10 @@ import {ApiService} from '../api.service';
 export class Tab2Page {
 
 
-  users : any[];
-  numberContact : any[];
+  users: any[];
+  numberContact: any[];
 
-  
-  constructor(public _apiService : ApiService) {
+  constructor(public apiService: ApiService, public router: Router) {
     this.getContact();
     this.getNumberContact();
 
@@ -27,22 +27,22 @@ export class Tab2Page {
   }
 
   getContact(){
-    this._apiService.getContact().subscribe((res:any) =>{
-      console.log("SUCCESS GET USER ===", res);
+    this.apiService.getContact().subscribe((res: any) =>{
+      console.log('SUCCESS GET USER ===', res);
       this.users = res;
     }, (error: any) =>{
-      console.log("ERRRO GET USER ===", error);
-    }) 
+      console.log('ERRRO GET USER ===', error);
+    });
 
 }
 
 getNumberContact(){
-  this._apiService.getNumberContact().subscribe((res:any) =>{
-    console.log("SUCCESS GET NUMBER ===", res);
+  this.apiService.getNumberContact().subscribe((res: any) =>{
+    console.log('SUCCESS GET NUMBER ===', res);
     this.numberContact = res;
   }, (error: any) =>{
-    console.log("ERRRO GET USER ===", error);
-  }) 
+    console.log('ERRRO GET USER ===', error);
+  });
 }
 
 

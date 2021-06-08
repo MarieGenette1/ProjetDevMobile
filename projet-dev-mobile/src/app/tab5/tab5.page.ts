@@ -62,6 +62,9 @@ export class Tab5Page implements OnInit {
     minPrice: [
       {type: 'required', message: 'Veuillez indiquer le prix minimum'},
     ],
+    file: [
+      {type: 'required', message: 'Aucun fichier'},
+    ],
   };
 
   public falseFormControl = new FormControl(true);
@@ -77,6 +80,12 @@ export class Tab5Page implements OnInit {
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
+      presentation: new FormControl('', Validators.required),
+      about: new FormControl('', Validators.required),
+      activity: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      file: new FormControl('', Validators.required),
       minPrice: new FormControl('', Validators.required),
       sectorDistance: new FormControl('', Validators.required),
       town: new FormControl('', Validators.required),
@@ -104,6 +113,8 @@ export class Tab5Page implements OnInit {
     this.submitAttempt = true;
     this.userData.push([
       {
+        name: this.validationsForm.value.name,
+        firstname: this.validationsForm.value.firstname,
         town: this.validationsForm.value.town,
         jobName: this.validationsForm.value.jobName,
         society: this.validationsForm.value.society,
@@ -120,6 +131,9 @@ export class Tab5Page implements OnInit {
         surface: this.validationsForm.value.surface,
         room: this.validationsForm.value.room,
         minPrice: this.validationsForm.value.minPrice,
+        activity: this.validationsForm.value.activity,
+        about: this.validationsForm.value.about,
+        presentation: this.validationsForm.value.presentation
       },
     ]);
     console.log('success');

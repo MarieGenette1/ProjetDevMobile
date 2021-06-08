@@ -4,43 +4,28 @@
                    cancelButtonText="Annuler"
                    placeholder="Rechercher un profil"
                    showCancelButton="focus"
+                   [(ngModel)]="filterTerm" animated="true"
                    (ionInput)="onSearchInput($event)"
                    (ionCancel)="onSearchCancel($event)">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense" *ngFor="let number of numberContact">
-    <ion-title>{{number.numberUser}} profil(s)</ion-title>
-  </ion-header>
-  <div class="padding">
-    <ion-list *ngFor="let user of users">
-
-      <ion-item>
-        <ion-avatar>
-          <img alt="photo" src="assets/img/avatar.png">
-        </ion-avatar>
-        <ion-label class="short-version">
-          <h2>{{user.nom}} {{user.prenom}}  </h2>
-          <p>Responsable Marketing</p>
-          <p>57000 Metz </p>
-        </ion-label>
-        <ion-item class="arrow" lines="none" button detail="true" ></ion-item>
-      </ion-item>
-</ion-list>
-  </div>
-  <ion-list lines="none">
-    <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users">
+    <ion-header collapse="condense">
+      <ion-title *ngFor="let user of userService.users | filter: filterTerm as filtered">{{filtered.length}} profil(s)</ion-title>
+    </ion-header>
+    <div class="padding">
+  <ion-list id="d" lines="full">
+    <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users | filter:filterTerm as filtered">
       <ion-avatar>
         <img alt="photo" src="{{user.img}}">
       </ion-avatar>
       <ion-label  class="short-version">
         <h2>{{user.name}}  </h2>
-        <p>Responsable Marketing</p>
-        <p>57000 Metz </p>
+        <p>{{user.job}}</p>
+        <p>{{user.town}} </p>
       </ion-label>
     </ion-item>
   </ion-list>
+    </div>
 </ion-content>
-

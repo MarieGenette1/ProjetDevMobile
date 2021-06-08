@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {ApiService} from '../api.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
-
 
 
 @Component({
@@ -12,9 +11,12 @@ import {UserService} from '../service/user.service';
 })
 export class DetailPage {
   public user;
+  public contacts: any[];
 
-
-  constructor(public _apiService: ApiService, public route: ActivatedRoute, public userService: UserService) {
+  constructor(public apiService: ApiService,
+              public route: ActivatedRoute,
+              public router: Router,
+              public userService: UserService) {
   }
 
   onSearchInput($event: any) {
@@ -26,6 +28,4 @@ export class DetailPage {
     this.user = this.userService.getUser(userId);
   }
 
-  maFonction() {
-  }
 }

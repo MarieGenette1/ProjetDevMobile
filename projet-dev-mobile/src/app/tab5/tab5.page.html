@@ -21,22 +21,22 @@
       <span>
          <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
-           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           <img src="assets/img/avatar.png" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="file" [disabled]="trueFormControl===false"><button class="file">Choisir fichier</button></ion-input>
       </ion-item>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item class="user" lines="none">
       <ion-label class="my-label" position="floating"><strong>&nbsp;Nom:</strong> Schmitt</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
 
-    <ion-item lines="none">
+    <ion-item class="user" lines="none">
       <ion-label class="my-label" position="floating"><strong>&nbsp;Prénom :</strong> Alexandre</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" formControlName="firstname"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
@@ -96,8 +96,20 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="file"><button class="file">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
       </ion-item>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="my-label" position="floating">&nbsp;Présentation</ion-label>
+      <ion-input type="text" formControlName="presentation"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="my-label" position="floating">&nbsp;Activité</ion-label>
+      <ion-input type="text" formControlName="activity"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label class="my-label" position="floating">&nbsp;Sur la société</ion-label>
+      <ion-input type="text" formControlName="about"></ion-input>
     </ion-item>
     <ion-item class="question" lines="none">
       <ion-label class="my-label">&nbsp;Recherchez-vous un emploi ?</ion-label>
@@ -180,7 +192,7 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="home" [disabled]="trueFormControl===false"><button class="file" (click)="addFile()" [disabled]="trueFormControl.value===false">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="file"><button class="file" [disabled]="trueFormControl.value===false">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
       </ion-item>
 
     </ion-item>
@@ -278,7 +290,7 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" color="secondary" expand="block"  [disabled]="!validationsForm.valid || trueFormControl.value===false || trueFormControl1===true">Enregistrer</ion-button>
+        <ion-button type="submit" color="secondary" expand="block">Enregistrer</ion-button>
         <ion-button [routerLink]="['/login']"  color="medium" expand="block">Déconnexion</ion-button>
       </ion-col>
     </ion-row>
