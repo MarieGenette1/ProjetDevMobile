@@ -17,6 +17,27 @@
     <div class="padding">
   <ion-list id="d" lines="full">
     <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users | filter:filterTerm as filtered">
+  <ion-header collapse="condense" *ngFor="let number of numberContact">
+    <ion-title>{{number.numberUser}} profil(s)</ion-title>
+  </ion-header>
+  <div class="padding">
+    <ion-list *ngFor="let user of users">
+
+      <ion-item>
+        <ion-avatar>
+          <img alt="photo" src="assets/img/avatar.png">
+        </ion-avatar>
+        <ion-label class="short-version">
+          <h2>{{user.nom}} {{user.prenom}}  </h2>
+          <p>Responsable Marketing</p>
+          <p>57000 Metz </p>
+        </ion-label>
+        <ion-item class="arrow" lines="none" button detail="true" ></ion-item>
+      </ion-item>
+</ion-list>
+  </div>
+  <ion-list lines="full">
+    <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users">
       <ion-avatar>
         <img alt="photo" src="{{user.img}}">
       </ion-avatar>
