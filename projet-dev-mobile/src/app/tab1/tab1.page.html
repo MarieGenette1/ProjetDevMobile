@@ -10,10 +10,11 @@
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
 <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-title *ngFor="let user of userService.users | filter: filterTerm as filtered">{{filtered.length}} profil(s)</ion-title>
-    </ion-header>
+  <ion-header collapse="condense">
+    <ion-title *ngFor="let user of userService.users | filter: filterTerm as filtered">{{filtered.length}} profil(s)</ion-title>
+  </ion-header>
   <div class="padding">
     <ion-list *ngFor="let user of users">
       <ion-item>
@@ -28,8 +29,9 @@
         <ion-item class="arrow" lines="none" button detail="true" ></ion-item>
       </ion-item>
 </ion-list>
-  <ion-list lines="full">
-    <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users">
+  </div>
+  <ion-list lines="none">
+    <ion-item [routerLink]="'/detail/' + user.id" detail="true" *ngFor="let user of userService.users | filter: filterTerm as filtered">
       <ion-avatar>
         <img alt="photo" src="{{user.img}}">
       </ion-avatar>
@@ -40,5 +42,5 @@
       </ion-label>
     </ion-item>
   </ion-list>
-    </div>
 </ion-content>
+
