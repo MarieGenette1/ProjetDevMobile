@@ -1,7 +1,0 @@
-{
-  "name": "projet-dev-mobile",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
