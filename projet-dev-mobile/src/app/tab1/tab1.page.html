@@ -4,6 +4,7 @@
                    cancelButtonText="Annuler"
                    placeholder="Rechercher un profil"
                    showCancelButton="focus"
+                   [(ngModel)]="filterTerm" animated="true"
                    (ionInput)="onSearchInput($event)"
                    (ionCancel)="onSearchCancel($event)">
     </ion-searchbar>
@@ -12,24 +13,24 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense" *ngFor="let number of numberContact">
-    <ion-title>{{number.numberUser}} profil</ion-title>
+    <ion-title >{{number.numberUser}}&nbsp;profils</ion-title>
   </ion-header>
 
 
   <div class="padding">
-    <ion-list *ngFor="let user of users">
-
-      <ion-item>
+    <ion-list lines="full" *ngFor="let user of users | filter: filterTerm as filtered">
+      <ion-item (click)="sawDetail(this.user)">
         <ion-avatar>
-          <img alt="photo" src="assets/img/avatar.png">
+          <img alt="photo" src="">
         </ion-avatar>
         <ion-label>
-          <h2> {{user.nom}} {{user.prenom}}  </h2>
-          <p>Responsable Marketing</p>
-          <p>57000 Metz </p>
+          <h2> {{user.nom}} {{user.prenom}} </h2>
+          <p>{{user.nom_emploi}}</p>
+          <p>{{user.code_post}} {{user.ville}} </p>
         </ion-label>
+        <ion-item lines="none"  button detail="true" ></ion-item>
       </ion-item>
-</ion-list>
+    </ion-list>
   </div>
 </ion-content>
 

@@ -9,12 +9,17 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import {HttpClientModule} from '@angular/common/http';
+import {LogerService} from './user/loger.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot({mode:'ios'}),HttpClientModule, AppRoutingModule, FontAwesomeModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {provide : LogerService, useClass : LogerService,}
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

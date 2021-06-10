@@ -1,17 +1,7 @@
-ion-header{
-  background-color: #00a3d9;
-  padding: 5px;
+h2{
+  color: #aaa;
+  font-size: 1em;
 }
-
-ion-searchbar{
-  margin-top: 10px;
-}
-
-ion-title {
-  background-color: #999;
-  padding: 5px;
-}
-
 ion-content>ion-header>ion-title {
   padding: 15px;
   color: white;
@@ -25,8 +15,7 @@ ion-thumbnail{
 }
 
 .padding {
-  margin-top: 20px;
-  padding-right: 20px;
+  padding: 5%;
 }
 
 ion-avatar{
@@ -36,14 +25,6 @@ ion-avatar{
 ion-label>h2{
   font-weight: bold;
 }
-
-ion-item{
-  --ion-border-color: black;
-}
-
 .short-version{
   display:inline-block;
-}
-ion-item.arrow{
-  font-weight: 800!important;
 }

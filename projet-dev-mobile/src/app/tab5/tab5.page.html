@@ -13,164 +13,212 @@
   <ion-header collapse="condense">
   </ion-header>
   <ion-toolbar></ion-toolbar>
-  <form>
+  <form [formGroup]="validationsForm" (ngSubmit)="update(validationsForm.value)">
     <ion-item lines="none">
-      <ion-label class="my-label">Photo de profil</ion-label>
+      <ion-label class="my-label">&nbsp;Photo de profil</ion-label>
     </ion-item>
-    <ion-item lines="full">
-      <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
-         <ion-thumbnail slot="start">
-           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
-         </ion-thumbnail>
-      </span>
-
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating"><strong>Nom:</strong> Schmitt</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating"><strong>Prénom :</strong> Alexandre</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating"><strong>Ville :</strong> Farebersviller</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Poste</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Société</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="stacked">Date de naissance</ion-label>
-      <ion-input type="date"></ion-input>
-    </ion-item>
-
     <ion-item lines="none">
-      <ion-label class="my-label">Photo de ma carte de visite</ion-label>
-    </ion-item>
-
-    <ion-item lines="full">
       <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
+         <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
-           <img id="mini" src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           <img src="assets/img/avatar.png" alt="avatar de profil"/>
          </ion-thumbnail>
-      </span>
+        </span>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"></ion-label>
+        <ion-input type="text" formControlName="file" [disabled]="trueFormControl===false"><button class="file">Choisir fichier</button></ion-input>
+      </ion-item>
     </ion-item>
 
-    <ion-item class="question" lines="full">
-      <ion-label class="my-label">Recherchez-vous un emploi ?&nbsp;&nbsp;&nbsp;</ion-label>
-      <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
-      <ion-label class="box">Oui</ion-label>
-      <ion-checkbox class="size" color="primary" (click)="trueFormControl.setValue(false)" [formControl]="falseFormControl"></ion-checkbox>
-      <ion-label class="box">Non</ion-label>
-    </ion-item>
+    <!--
+      div pour ngfor
+    -->
 
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Type de contrat</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+    <div *ngFor="let user of users">
 
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Emploi recherché</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item class="user" lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Nom: </strong> {{user.nom}} </ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+  
+      <ion-item class="user" lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Prénom: </strong> {{user.prenom}}</ion-label>
+        <ion-input type="text" formControlName="firstname"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Ville: </strong>{{user.ville}}</ion-label>
+        <ion-input type="text" formControlName="town"></ion-input>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.town">
+          <div class="error-message" *ngIf="validationsForm.get('town').hasError(validation.type) && (validationsForm.get('town').dirty || validationsForm.get('town').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Poste: </strong> {{user.nom_emploi}}  </ion-label>
+        <ion-input type="text" formControlName="jobName"></ion-input>
+  
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.jobName">
+          <div class="error-message" *ngIf="validationsForm.get('jobName').hasError(validation.type) && (validationsForm.get('jobName').dirty || validationsForm.get('jobName').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Société: </strong> {{user.nom_entreprise}}  </ion-label>
+        <ion-input type="text" formControlName="society"></ion-input>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validationMessages.society">
+          <div class="error-message" *ngIf="validationsForm.get('society').hasError(validation.type) && (validationsForm.get('society').dirty || validationsForm.get('society').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="stacked"><strong>&nbsp;Date de naissance: </strong> {{user.date_naiss}}  </ion-label>
+        <ion-datetime value="date" display-format="DD MM YYYY" placeholder="jj-mm-aaaaa" min="1900-01-01" max="2021-05-31" formControlName="birthdate"></ion-datetime>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.birthdate">
+          <div class="error-message" *ngIf="validationsForm.get('birthdate').hasError(validation.type) && (validationsForm.get('birthdate').dirty || validationsForm.get('birthdate').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label">&nbsp;Photo de ma carte de visite:</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <span>
+           <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
+           <ion-thumbnail slot="start">
+             <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
+           </ion-thumbnail>
+        </span>
+        <ion-item lines="none">
+          <ion-label class="my-label" position="floating"></ion-label>
+          <ion-input type="text" formControlName="file"><button class="file">Choisir fichier: </button>&nbsp;Aucun fichier</ion-input>
+        </ion-item>
+      </ion-item>
+  
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Présentation: </strong> {{user.presentation}} </ion-label>
+        <ion-input type="text" formControlName="presentation"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Activité: </strong> {{user.activites}} </ion-label>
+        <ion-input type="text" formControlName="activity"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Sur la société: </strong> {{user.text_societe}} </ion-label>
+        <ion-input type="text" formControlName="about"></ion-input>
+      </ion-item>
+  
+      
+      <ion-item class="question" lines="none">
+        <ion-label class="my-label">&nbsp;Recherchez-vous un emploi ?</ion-label>
+        <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
+        <ion-label class="box">Oui</ion-label>
+        <ion-checkbox class="size" color="primary" (click)="trueFormControl.setValue(false)" [formControl]="falseFormControl" ></ion-checkbox>
+        <ion-label class="box">Non</ion-label>
+      </ion-item>
 
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Localisation</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Rayon</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Disponibilité</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">//PARTIE IMPORT CV//</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Type de contrat: </strong> {{user.type_cont}} </ion-label>
+        <ion-input type="text" formControlName="contract" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.contract">
+          <div class="error-message" *ngIf="validationsForm.get('contract').hasError(validation.type) && (validationsForm.get('contract').dirty || validationsForm.get('contract').touched)
+               && trueFormControl.value===true">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Emploi recherché: </strong> {{user.nom_emploi_rechercher}} </ion-label>
+        <ion-input type="text" formControlName="job" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.job">
+          <div class="error-message" *ngIf="validationsForm.get('job').hasError(validation.type) && (validationsForm.get('job').dirty || validationsForm.get('job').touched)
+               && trueFormControl.value===true">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Localisation: </strong>{{user.localisation}}</ion-label>
+        <ion-input type="text" formControlName="location" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.location">
+          <div class="error-message" *ngIf="validationsForm.get('location').hasError(validation.type) && (validationsForm.get('location').dirty || validationsForm.get('location').touched)
+               && trueFormControl.value===true">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Distance: </strong> {{user.rayon}} </ion-label>
+        <ion-input type="text" pattern="\d*" maxlength="4" formControlName="milesAway" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.milesAway">
+          <div class="error-message" *ngIf="validationsForm.get('milesAway').hasError(validation.type) && (validationsForm.get('milesAway').dirty || validationsForm.get('milesAway').touched)
+               && trueFormControl.value===true">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"><strong>&nbsp;Disponibilité: </strong>{{user.disponibilite}}</ion-label>
+        <ion-input type="text" minlength="3" maxlength="3" value="OUI/NON" formControlName="free" clear-input="true" [disabled]="trueFormControl.value===false"></ion-input>
+      <div class="validation-errors" >
+        <ng-container *ngFor="let validation of validationMessages.free">
+          <div class="error-message" *ngIf="validationsForm.get('free').hasError(validation.type) && (validationsForm.get('free').dirty || validationsForm.get('free').touched)
+               && trueFormControl.value===true">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      </ion-item>
+  
+    </div>
+    <!--  
+      Fin Ng for
+    -->
+    
     <ion-item lines="none">
       <ion-label class="my-label">Mon CV</ion-label>
     </ion-item>
 
-    <ion-item lines="full">
+    <ion-item class="CV" lines="none">
       <span>
-         <ion-icon id="delete" name="trash-outline"></ion-icon>
+         <ion-icon class="Xfile" id="delete" name="trash-outline"></ion-icon>
          <ion-thumbnail slot="start">
            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="avatar de profil"/>
          </ion-thumbnail>
       </span>
+      <ion-item lines="none">
+        <ion-label class="my-label" position="floating"></ion-label>
+        <ion-input type="text" formControlName="file"><button class="file" [disabled]="trueFormControl.value===false">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+      </ion-item>
 
     </ion-item>
 
-    <ion-item class="question" lines="full">
-      <ion-label class="my-label">Recherchez-vous un logement ?</ion-label>
-      <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
-      <ion-label class="box">Oui</ion-label>
-      <ion-checkbox class="size" color="primary" (click)="trueFormControl.setValue(false)" [formControl]="falseFormControl"></ion-checkbox>
-      <ion-label class="box">Non</ion-label>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Transaction</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Type</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Localisation</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Rayon</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Surface min</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Nombre de pièce(s) min</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-
-    <ion-item lines="full">
-      <ion-label class="my-label" position="floating">Prix min</ion-label>
-      <ion-input type="number"></ion-input>
-    </ion-item>
-
+   
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="secondary" expand="block">Enregistrer</ion-button>
-        <ion-button [routerLink]="['/login']" type="submit" color="medium" expand="block">Déconnexion</ion-button>
+        <ion-button [routerLink]="['/login']"  color="medium" expand="block">Déconnexion</ion-button>
       </ion-col>
     </ion-row>
-
   </form>
 </ion-content>
