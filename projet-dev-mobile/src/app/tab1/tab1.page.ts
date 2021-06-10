@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ApiService} from '../api.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../service/user.service';
 
 
@@ -13,10 +13,13 @@ import {UserService} from '../service/user.service';
 
 export class Tab1Page{
   users: any[];
+ public user;
   numberContact: any[];
   filterTerm: any;
-
-  constructor(public apiService: ApiService, public router: Router, public userService: UserService) {
+  constructor(public apiService: ApiService,
+              public router: Router,
+              public userService: UserService,
+              public activatedRoute: ActivatedRoute) {
     this.getUser();
     this.getNumberUser();
   }
@@ -32,9 +35,7 @@ export class Tab1Page{
     }, (error: any) =>{
       console.log('ERRRO GET USER ===', error);
     });
-
   }
-
   getNumberUser(){
     this.apiService.getNumberUser().subscribe((res: any) =>{
       console.log('SUCCESS GET NUMBER ===', res);

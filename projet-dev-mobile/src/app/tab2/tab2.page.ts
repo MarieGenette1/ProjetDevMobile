@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {ApiService} from '../api.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../service/user.service';
+
 
 
 @Component({
@@ -9,16 +11,22 @@ import {Router} from '@angular/router';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
-
+  public user;
+  filterTerm: any;
   users: any[];
   numberContact: any[];
-
-  constructor(public apiService: ApiService, public router: Router) {
+  data: any;
+  contacts: any;
+  constructor(public apiService: ApiService,
+              public router: Router,
+              public userService: UserService,
+              public activatedRoute: ActivatedRoute) {
     this.getContact();
     this.getNumberContact();
-
-
+    this.activatedRoute.queryParams.subscribe((res)=>{
+      this.data = JSON.parse(res.value);
+      console.log(this.data);
+    });
   }
 
  onSearchInput($event: any) {
@@ -45,6 +53,8 @@ getNumberContact(){
   });
 }
 
-
-
+ removeUser() {
+  this.contacts.splice(this.user);
+ console.log(this.contacts);
+  }
 }

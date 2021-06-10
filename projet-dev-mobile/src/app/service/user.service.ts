@@ -4,7 +4,6 @@ interface User {
   id: string;
   username: string;
   name: string;
-  likedBy: boolean;
   img: string;
   email: string;
   password: string;
@@ -30,7 +29,6 @@ export class UserService {
         id: 'One',
         username: 'BigBoss',
         name: 'Beaugosse Alex',
-        likedBy: true,
         img: 'assets/img/Alex.png',
         email: 'tactac@gmail.com',
         password: 'TacTac57',
@@ -45,7 +43,6 @@ export class UserService {
         id: 'Two',
         username: 'BitCoin',
         name: 'Codeur Cédric',
-        likedBy: true,
         img: 'assets/img/Cedric.png',
         email: 'ccodeur@gmail.com',
         password: 'BlockChain',
@@ -59,7 +56,6 @@ export class UserService {
         id: 'Three',
         username: 'Gorilla',
         name: 'Monkey Guy',
-        likedBy: true,
         img: 'assets/img/Eric.png',
         email: 'echo@gmail.com',
         password: 'Monkey57',
@@ -73,7 +69,6 @@ export class UserService {
         id: 'Four',
         username: 'Looser',
         name: 'Benjamine Derien',
-        likedBy: false,
         img: 'assets/img/Benj.png',
         email: 'bullshit@gmail.com',
         password: 'Pignouf22',
@@ -87,7 +82,6 @@ export class UserService {
         id: 'Five',
         username: 'Maryruana',
         name: 'Mary Atoutprix',
-        likedBy: true,
         img: 'assets/img/Marie.png',
         email: 'maryruana@gmail.com',
         password: 'Network57',
@@ -102,7 +96,6 @@ export class UserService {
         id: 'Six',
         username: 'Javatoutcasser!',
         name: 'Tata Kahina',
-        likedBy: true,
         img: 'assets/img/kahina.png',
         email: 'lajava@gmail.com',
         password: 'struts57',
@@ -116,7 +109,6 @@ export class UserService {
       { id: 'Seven',
         username: 'One punch man',
         name: 'Zorro Estarrivé',
-        likedBy: false,
         img: 'assets/img/Zorro.png',
         email: 'whatever@gmail.com',
         password: 'Noway11',
