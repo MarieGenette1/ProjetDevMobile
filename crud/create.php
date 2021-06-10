@@ -20,6 +20,15 @@ $q = mysqli_query($con,
 VALUES (NULL, '$nom', '$prenom', NULL, NULL, '$email', NULL, NULL, (SELECT MAX(id_user) FROM user_login))");
 
 
+$q2 = mysqli_query($con, 
+"INSERT INTO `schmit448u_findme`.`type_contrat` (`id_contrat`, `type_cont`, `nom_emploi`, `nom_emploi_rechercher`, `nom_entreprise`, `localisation`, `rayon`, `disponibilite`, `id_user`) 
+VALUES (NULL, NULL, NULL, NULL, NULL, NULL, NULL,NULL, (SELECT MAX(id_user) FROM user_login))");
+
+$q3 = mysqli_query($con, 
+"INSERT INTO `schmit448u_findme`.`profil` (`id_profil`, `presentation`, `activites`, `text_societe`, `id_user`) 
+VALUES (NULL,NULL,  NULL, NULL, (SELECT MAX(id_user) FROM user_login))");
+
+
 
 if($request){
     http_response_code(201);
