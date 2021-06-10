@@ -1,0 +1,112 @@
+
+.my-label{
+  font-size:.75em;
+}
+.file-label{
+  font-size:.8em;
+}
+#delete{
+  position: absolute;
+  left: 30px;
+  top: 0;
+}
+#delete.Xfile{
+  position: absolute;
+  left: 30px;
+  top:5px;
+}
+ion-checkbox::part(container){
+  --size: 17px;
+}
+ion-label.box{
+  max-width:2em !important;
+}
+
+.question{
+  font-size:1em;
+}
+//ion-content {
+//  --ion-background-color: linear-gradient(#00a3d9, #fff);
+//}
+
+
+ion-header{
+  background-color: #00a3d9;
+  padding: 5px;
+}
+
+ion-searchbar{
+  padding-top: 0.5em;
+}
+
+.size{
+  width:15px;
+  height:15px;
+}
+
+ion-thumbnail{
+  margin-bottom:10px;
+  --border-radius : 20%;
+}
+
+
+#logement{
+  height:3em;
+}
+
+ion-content {
+  .error-message
+  {
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-top: -10px;
+  }
+
+  .submit-btn {
+    margin: 48px 12px 12px;
+  }
+}
+.ng-valid.ng-dirty:not(form) {
+  border: solid 2px lightgreen;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.ng-invalid.ng-dirty:not(form), .ng-invalid:not(form).form-submitted {
+  border: solid 2px lightcoral;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.ng-pristine:not(form) {
+  border: solid 2px #ddd;
+  border-radius: 10px;
+  margin-bottom:1em;
+  text-indent: 5px;
+}
+
+form {
+padding-right: 8px;
+}
+
+.user ion-input{
+  border: 2px solid limegreen;
+  border-radius: 10px;
+}
+
+ion-button{
+  margin-left:10px;
+}
+
+.CV{
+  display: inline-block;
+}
+
+.file{
+  display: inline-block;
+  margin-left: 1.2em;
+  border: 2px solid #ccc;
+  border-radius:5px;
+  padding:5px;
+}

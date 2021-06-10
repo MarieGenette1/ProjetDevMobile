@@ -1,0 +1,30 @@
+h2{
+  color: #aaa;
+  font-size: 1em;
+}
+ion-content>ion-header>ion-title {
+  padding: 15px;
+  color: white;
+  text-align: left;
+  font-weight: lighter;
+}
+
+ion-thumbnail{
+  margin-bottom:10px;
+  --border-radius : 20%;
+}
+
+.padding {
+  padding: 5%;
+}
+
+ion-avatar{
+  margin-right:10px;
+}
+
+ion-label>h2{
+  font-weight: bold;
+}
+.short-version{
+  display:inline-block;
+}

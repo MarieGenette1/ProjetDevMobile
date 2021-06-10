@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-searchbar color="light" class="ion-searchtext"
+                   cancelButtonText="Annuler"
+                   placeholder="Rechercher un profil"
+                   showCancelButton="focus"
+                   [(ngModel)]="filterTerm" animated="true"
+                   (ionInput)="onSearchInput($event)"
+                   (ionCancel)="onSearchCancel($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense" *ngFor="let number of numberContact">
+    <ion-title >Mes contacts: {{number.numberContact}}&nbsp;profils</ion-title>
+  </ion-header>
+
+
+  <div class="padding" (onload)="getContact()">
+    <ion-list lines="full" *ngFor="let user of users | filter: filterTerm as filtered">
+      <ion-item >
+        <ion-button class="delete" color="danger" (click)="deleteUser(this.user)">X</ion-button>
+        <ion-avatar>
+          <img alt="photo" src="{{user.img}}">
+        </ion-avatar>
+        <ion-label>
+          <h2> {{user.nom}} {{user.prenom}} </h2>
+          <p>Responsable Marketing</p>
+          <p>57000 Metz </p>
+        </ion-label>
+        <ion-item lines="none"  button detail="true" ></ion-item>
+      </ion-item>
+</ion-list>
+  </div>
+</ion-content>
+

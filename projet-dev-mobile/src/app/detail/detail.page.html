@@ -1,0 +1,37 @@
+<ion-header  *ngFor="let user of users">
+  <ion-toolbar>
+    <ion-title>
+     {{user.nom}} {{user.prenom}}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)= "myBackButton()" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="padding" *ngFor="let user of users">
+    <ion-item >
+      <ion-avatar>
+        <img alt="photo" src="{{user.img}}">
+      </ion-avatar>
+      <ion-label class="short-version">
+        <h2>{{user.nom}} {{user.prenom}}  </h2>
+        <p> {{user.nom_emploi}} </p>
+        <p> {{user.code_post}} {{user.ville}} </p>
+      </ion-label>
+       <ion-avatar> <ion-icon (click)="addFavoris()" size="large" color="{{post.color}}" name="heart"></ion-icon></ion-avatar>
+      </ion-item>
+  <h2>Présentation</h2>
+  <p> {{user.presentation}} </p>
+  <h2>Activités</h2>
+  <p> {{user.activites}} </p>
+  <h2>Sur la société</h2>
+  <p> {{user.text_societe}} </p>
+  <ion-button type="submit" color="secondary" expand="block" (click)="addContact()" [disabled]="disableButton" >Prendre Contact</ion-button>
+
+</div>
+
+</ion-content>
