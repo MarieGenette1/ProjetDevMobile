@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Router} from '@angular/router';
 import {LogerService} from '../user/loger.service';
+import { PhotoService } from '../services/photo.service';
 
 
 
@@ -84,7 +85,8 @@ export class Tab5Page implements OnInit {
   indice : any;
 
   constructor(
-    private router: Router, 
+    private router: Router,
+    public photoService: PhotoService,
     public formBuilder: FormBuilder,
     public _apiService : ApiService,
     public _LogerService : LogerService) {
@@ -93,7 +95,13 @@ export class Tab5Page implements OnInit {
 
   }
 
-  ngOnInit() {
+  addPhotoToGallery() {
+      this.photoService.addNewToGallery();
+  }
+
+  async ngOnInit() {
+   await this.photoService.loadSaved();
+
     this.validationsForm = this.formBuilder.group({
       presentation: new FormControl('', Validators.required),
       about: new FormControl('', Validators.required),
@@ -175,9 +183,9 @@ export class Tab5Page implements OnInit {
       this.users = res;
     }, (error: any) =>{
       console.log("ERRRO get Single User ===", error);
-    }) 
+    })
   }
-  
+
   goToLoginPage(){
     if(this.id == null){
       this.router.navigate(['./login']);

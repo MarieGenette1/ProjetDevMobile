@@ -26,7 +26,13 @@
         </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="file" [disabled]="trueFormControl===false"><button class="file">Choisir fichier</button></ion-input>
+        <ion-input type="text" formControlName="file" [disabled]="trueFormControl===false">
+          <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+            <ion-fab-button (click)="addPhotoToGallery()">
+              <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-input>
       </ion-item>
     </ion-item>
 
@@ -40,12 +46,12 @@
         <ion-label class="my-label" position="floating"><strong>&nbsp;Nom: </strong> {{user.nom}} </ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
-  
+
       <ion-item class="user" lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Prénom: </strong> {{user.prenom}}</ion-label>
         <ion-input type="text" formControlName="firstname"></ion-input>
       </ion-item>
-  
+
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Ville: </strong>{{user.ville}}</ion-label>
         <ion-input type="text" formControlName="town"></ion-input>
@@ -60,7 +66,7 @@
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Poste: </strong> {{user.nom_emploi}}  </ion-label>
         <ion-input type="text" formControlName="jobName"></ion-input>
-  
+
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validationMessages.jobName">
           <div class="error-message" *ngIf="validationsForm.get('jobName').hasError(validation.type) && (validationsForm.get('jobName').dirty || validationsForm.get('jobName').touched)">
@@ -103,10 +109,16 @@
         </span>
         <ion-item lines="none">
           <ion-label class="my-label" position="floating"></ion-label>
-          <ion-input type="text" formControlName="file"><button class="file">Choisir fichier: </button>&nbsp;Aucun fichier</ion-input>
+          <ion-input type="text" formControlName="file">
+            <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+              <ion-fab-button (click)="addPhotoToGallery()">
+                <ion-icon name="camera"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+          </ion-input>
         </ion-item>
       </ion-item>
-  
+
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Présentation: </strong> {{user.presentation}} </ion-label>
         <ion-input type="text" formControlName="presentation"></ion-input>
@@ -119,8 +131,8 @@
         <ion-label class="my-label" position="floating"><strong>&nbsp;Sur la société: </strong> {{user.text_societe}} </ion-label>
         <ion-input type="text" formControlName="about"></ion-input>
       </ion-item>
-  
-      
+
+
       <ion-item class="question" lines="none">
         <ion-label class="my-label">&nbsp;Recherchez-vous un emploi ?</ion-label>
         <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
@@ -189,12 +201,12 @@
         </ng-container>
       </div>
       </ion-item>
-  
+
     </div>
-    <!--  
+    <!--
       Fin Ng for
     -->
-    
+
     <ion-item lines="none">
       <ion-label class="my-label">Mon CV</ion-label>
     </ion-item>
@@ -208,12 +220,18 @@
       </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="file"><button class="file" [disabled]="trueFormControl.value===false">Choisir fichier</button>&nbsp;Aucun fichier</ion-input>
+        <ion-input type="text" formControlName="file">
+          <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+            <ion-fab-button (click)="addPhotoToGallery()">
+              <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-input>
       </ion-item>
 
     </ion-item>
 
-   
+
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="secondary" expand="block">Enregistrer</ion-button>
