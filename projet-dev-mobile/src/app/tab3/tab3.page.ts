@@ -56,7 +56,7 @@ ngOnInit() {
       this.users = res;
     }, (error: any) =>{
       console.log("ERRRO GET USER ===", error);
-    }) 
+    })
 }
 
   getNumberFavoris(){
@@ -65,7 +65,7 @@ ngOnInit() {
         this.numberContact = res;
       }, (error: any) =>{
         console.log("ERRRO GET USER ===", error);
-      }) 
+      })
   }
 
 
@@ -84,7 +84,7 @@ ngOnInit() {
     }, (error: any) =>{
       console.log("Error supp contact ===", error);
     })
- 
+
   }
 
 

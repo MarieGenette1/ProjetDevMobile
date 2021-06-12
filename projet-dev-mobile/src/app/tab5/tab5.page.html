@@ -26,8 +26,20 @@
         </span>
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"></ion-label>
-        <ion-input type="text" formControlName="file" [disabled]="trueFormControl===false"><button class="file">Choisir fichier</button></ion-input>
+          <ion-select placeholder="Sélectionez" [(ngModel)]="selectedOption" formControlName="file">
+          <ion-select-option value="assets/img/Alex.png">Alex</ion-select-option>
+          <ion-select-option value="assets/img/Benj.png">Benj</ion-select-option>
+          <ion-select-option value="assets/img/Cedric.png">Cédric</ion-select-option>
+          <ion-select-option value="assets/img/Eric.png">Eric</ion-select-option>
+          <ion-select-option value="assets/img/Flo.png">Flo</ion-select-option>
+          <ion-select-option value="assets/img/Kahina.png">Kahina</ion-select-option>
+          <ion-select-option value="assets/img/Marie.png">Marie</ion-select-option>
+          <ion-select-option value="assets/img/Max.png">Max</ion-select-option>
+          <ion-select-option value="assets/img/Yukiko.png">Yukiko</ion-select-option>
+          <ion-select-option value="assets/img/Zorro.png">Zorro</ion-select-option>
+        </ion-select>
       </ion-item>
+      {{selectedOption}}
     </ion-item>
 
     <!--
@@ -40,12 +52,12 @@
         <ion-label class="my-label" position="floating"><strong>&nbsp;Nom: </strong> {{user.nom}} </ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
-  
+
       <ion-item class="user" lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Prénom: </strong> {{user.prenom}}</ion-label>
         <ion-input type="text" formControlName="firstname"></ion-input>
       </ion-item>
-  
+
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Ville: </strong>{{user.ville}}</ion-label>
         <ion-input type="text" formControlName="town"></ion-input>
@@ -60,7 +72,7 @@
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Poste: </strong> {{user.nom_emploi}}  </ion-label>
         <ion-input type="text" formControlName="jobName"></ion-input>
-  
+
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validationMessages.jobName">
           <div class="error-message" *ngIf="validationsForm.get('jobName').hasError(validation.type) && (validationsForm.get('jobName').dirty || validationsForm.get('jobName').touched)">
@@ -106,7 +118,7 @@
           <ion-input type="text" formControlName="file"><button class="file">Choisir fichier: </button>&nbsp;Aucun fichier</ion-input>
         </ion-item>
       </ion-item>
-  
+
       <ion-item lines="none">
         <ion-label class="my-label" position="floating"><strong>&nbsp;Présentation: </strong> {{user.presentation}} </ion-label>
         <ion-input type="text" formControlName="presentation"></ion-input>
@@ -119,8 +131,8 @@
         <ion-label class="my-label" position="floating"><strong>&nbsp;Sur la société: </strong> {{user.text_societe}} </ion-label>
         <ion-input type="text" formControlName="about"></ion-input>
       </ion-item>
-  
-      
+
+
       <ion-item class="question" lines="none">
         <ion-label class="my-label">&nbsp;Recherchez-vous un emploi ?</ion-label>
         <ion-checkbox class="size" color="primary" (click)="falseFormControl.setValue(false)" [formControl]="trueFormControl"></ion-checkbox>
@@ -189,12 +201,12 @@
         </ng-container>
       </div>
       </ion-item>
-  
+
     </div>
-    <!--  
+    <!--
       Fin Ng for
     -->
-    
+
     <ion-item lines="none">
       <ion-label class="my-label">Mon CV</ion-label>
     </ion-item>
@@ -213,7 +225,7 @@
 
     </ion-item>
 
-   
+
     <ion-row>
       <ion-col>
         <ion-button type="submit" color="secondary" expand="block">Enregistrer</ion-button>

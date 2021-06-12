@@ -51,7 +51,7 @@ export class Tab2Page {
     this.users = res;
   }, (error: any) =>{
     console.log("ERRRO of Contact ===", error);
-  })
+  });
 }
 
   getNumberContact(){
@@ -61,7 +61,7 @@ export class Tab2Page {
       this.numberContact = res;
     }, (error: any) =>{
       console.log("ERRRO GET USER CONTACT ===", error);
-    }) 
+    })
   }
 
   goToLoginPage(){
@@ -80,7 +80,7 @@ export class Tab2Page {
     }, (error: any) =>{
       console.log("Error supp contact ===", error);
     })
- 
+
   }
 
 

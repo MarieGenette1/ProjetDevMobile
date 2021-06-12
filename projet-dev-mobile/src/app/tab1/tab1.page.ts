@@ -25,13 +25,13 @@ export class Tab1Page{
     public userService: UserService,
     public _LogerService : LogerService,
     public activatedRoute: ActivatedRoute) {
-      this.goToLoginPage();
-      this.getUser();
-      this.getNumberUser();
+    this.goToLoginPage();
+    this.getUser();
+    this.getNumberUser();
 
   }
- async onSearchInput($event: any) {
-   }
+  async onSearchInput($event: any) {
+  }
   onSearchCancel($event: any) {
   }
 
@@ -71,4 +71,3 @@ export class Tab1Page{
 
 
 }
-

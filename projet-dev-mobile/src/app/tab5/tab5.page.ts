@@ -12,7 +12,7 @@ import {LogerService} from '../user/loger.service';
   styleUrls: ['./tab5.page.scss'],
 })
 export class Tab5Page implements OnInit {
-
+  selectedOption: string;
   validationsForm: FormGroup;
   validationMessages = {
     birthdate: [
@@ -75,16 +75,19 @@ export class Tab5Page implements OnInit {
   public trueFormControl1 = new FormControl(false);
   public date: string = new Date().toISOString().toString();
 
-  private submitAttempt: boolean;
-  private userData=[];
-
+  categories: any = ['assets/img/Alex.png', 'assets/img/Benj.png', 'assets/img/Cedric.png',
+    'assets/img/Eric.png', 'assets/img/Flo.png', 'assets/img/Kahina.png', 'assets/img/Marie.png',
+    'assets/img/Max.png', 'assets/img/Yukiko.png','assets/img/Zorro.png' ];
   users : any[];
   updateUser : any[];
   id = this._LogerService.id_user;
-  indice : any;
+  indice: any;
+
+  private submitAttempt: boolean;
+  private userData=[];
 
   constructor(
-    private router: Router, 
+    private router: Router,
     public formBuilder: FormBuilder,
     public _apiService : ApiService,
     public _LogerService : LogerService) {
@@ -148,7 +151,8 @@ export class Tab5Page implements OnInit {
         minPrice: this.validationsForm.value.minPrice,
         activity: this.validationsForm.value.activity,
         about: this.validationsForm.value.about,
-        presentation: this.validationsForm.value.presentation
+        presentation: this.validationsForm.value.presentation,
+        file: this.validationsForm.value.file
       },
     ]);
     console.log('success');
@@ -175,9 +179,9 @@ export class Tab5Page implements OnInit {
       this.users = res;
     }, (error: any) =>{
       console.log("ERRRO get Single User ===", error);
-    }) 
+    });
   }
-  
+
   goToLoginPage(){
     if(this.id == null){
       this.router.navigate(['./login']);
@@ -251,9 +255,6 @@ export class Tab5Page implements OnInit {
       console.log("SUCCESS envoie ===", res);
     }, (error: any) =>{
       console.log("ERRRO envoie ===", error);
-    })
-
+    });
   }
-
-
 }

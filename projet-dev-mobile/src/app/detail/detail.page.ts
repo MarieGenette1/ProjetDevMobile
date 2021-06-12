@@ -80,7 +80,7 @@ export class DetailPage {
       this.users = res;
     }, (error: any) =>{
       console.log("ERRRO get Single User ===", error);
-    }) 
+    })
   }
 
   addContact(){
@@ -91,18 +91,20 @@ export class DetailPage {
     }, (error: any) =>{
       console.log('Error Contact ' + error);
       alert("Cette personne est déjà dans vos contact");
-    }); 
- 
+    });
+
 }
   addFavoris(){
+    this.post.color = 'danger';
     this._apiService.addFavoris(this.id_user, this.id).subscribe((res: any) =>{
       console.log('Message CONTACT : ', res);
       alert(res['message']);
-  
+      //this.router.navigate(['./tabs/tab3']);
+
     }, (error: any) =>{
       console.log('Error Contact ' + error);
       alert("Cette personne est déjà dans vos contact");
-    }); 
+    });
 }
 
 }
