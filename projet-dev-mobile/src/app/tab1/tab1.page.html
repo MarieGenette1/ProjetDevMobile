@@ -12,8 +12,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense" *ngFor="let number of numberContact">
-    <ion-title >{{number.numberUser}}&nbsp;profils</ion-title>
+  <ion-header collapse="condense">
+    <ion-title *ngFor="let user of users | filter: filterTerm as filtered">Total des profils: {{filtered.length}}&nbsp;profils</ion-title>
   </ion-header>
 
 
@@ -21,7 +21,7 @@
     <ion-list lines="full" *ngFor="let user of users | filter: filterTerm as filtered">
       <ion-item (click)="sawDetail(this.user)">
         <ion-avatar>
-          <img alt="photo" src="">
+          <img alt="photo" src="{{user.file}}">
         </ion-avatar>
         <ion-label>
           <h2> {{user.nom}} {{user.prenom}} </h2>
